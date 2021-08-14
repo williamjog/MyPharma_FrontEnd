@@ -86,7 +86,7 @@ const App = () => {
       /> : 
       <div>
         <div className="header">
-          <img src={logo} alt="logo"/>
+          <img className="imgHeader" src={logo} alt="logo"/>
         </div>
         <div className="cardWrapper"> 
           { medicines.map((medicine) => (
