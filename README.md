@@ -8,7 +8,6 @@ Elaborar um CRUD, para cadastro de produtos, obedecendo o seguinte:
 
 
 ## Repositório contendo os arquivos que compõe o Front-End em React da aplicação.
-## EndPoints:
 
 # Acesse em: https://mypharmafrontend.herokuapp.com/
 
