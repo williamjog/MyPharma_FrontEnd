@@ -11,6 +11,9 @@ Elaborar um CRUD, para cadastro de produtos, obedecendo o seguinte:
 
 ### Acesse em: https://mypharmafrontend.herokuapp.com/
 
+
+### Repositório do back-end: https://github.com/williamjog/MyPharma_BackEnd
+
 ### Dados dos produtos:
 * Código de barras;
 * Nome;
