@@ -1,0 +1,46 @@
+.title, .advertising {
+  text-align: center;
+}
+
+.medicine {
+  margin-left: 15em;
+  margin-bottom: 1em;
+  list-style-position: inside;
+  font-size: 20px;
+}
+
+.advertising {
+  margin-bottom: 4em;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+.medicineTitle {
+  display: inline-block;
+}
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.medicineCard {
+  margin: 1em;
+}
+
+.addButton {
+  margin-top: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  display: flex;
+  margin: 1em;
+  margin-left: 30em;
+}
