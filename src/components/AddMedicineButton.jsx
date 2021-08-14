@@ -8,7 +8,7 @@ const AddMedicineButton = () => {
 
   const addMedicine = async () => {
     if (!cod || !name || !description || price === 0 || stock === 0) {
-      alert('Você precisa preencher todos os campos, preço e estoque não podem ser zero!');
+      return alert('Você precisa preencher todos os campos, preço e estoque não podem ser zero!');
     }
 
     const doubled = medicines.find((medicine) =>  medicine.cod === Number(cod));
