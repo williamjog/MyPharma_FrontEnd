@@ -38,7 +38,7 @@ const AddMedicineButton = () => {
 
   return (
     <div className="addButton"> 
-      <Button onClick={addMedicine} variant="contained" color="primary" width={1000}>
+      <Button onClick={addMedicine} variant="outlined" color="primary" size="large">
         Adicionar
       </Button>
     </div>

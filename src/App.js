@@ -112,9 +112,9 @@ const App = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button variant="contained" color="primary" size="small">Editar</Button>
+                  <Button variant="outlined" color="primary" size="small">Editar</Button>
                   <Button 
-                    variant="contained" 
+                    variant="outlined" 
                     color="secondary" 
                     size="small"
                     onClick={() => deleteMedicine(medicine)}
