@@ -74,7 +74,14 @@ const App = () => {
         loop
         animationData={loading}
         play
-        style={{  position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', height: 400, width: 350 }}
+        style={{  
+          position: 'absolute', 
+          left: '50%', 
+          top: '50%', 
+          transform: 'translate(-50%, -50%)', 
+          height: 400, 
+          width: 350 
+        }}
       /> : 
       <div>
         <div className="header">
