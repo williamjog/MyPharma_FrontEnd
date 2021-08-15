@@ -13,9 +13,7 @@ const StockFilters = () => {
           label="Estoque Mínimo"
           type="number"
           onChange={(event) => setMinimumValue(event.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={{ shrink: true }}
           InputProps={{ inputProps: { min: 0 } }}
         />
       </div>
@@ -25,9 +23,7 @@ const StockFilters = () => {
           label="Estoque Máximo"
           type="number"
           onChange={(event) => setMaximumValue(event.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={{ shrink: true }}
           InputProps={{ inputProps: { min: 1 } }}
         />
       </div>
