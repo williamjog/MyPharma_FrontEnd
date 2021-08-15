@@ -10,7 +10,7 @@ const AddMedicineButton = () => {
   
   const addMedicine = async () => {
     if (!cod || !name || !description || price === 0 || stock < 0) {
-      return alert('Você precisa preencher todos os campos, preço não pode ser zero!');
+      return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
 
     const doubled = medicines.find((medicine) =>  medicine.cod === Number(cod));
@@ -45,7 +45,7 @@ const AddMedicineButton = () => {
 
   const editMedicine = async () => {
     if (!name || !description || price === 0 || stock < 0) {
-      return alert('Você precisa preencher todos os campos, preço não pode ser zero!');
+      return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
     
     await axios.put(process.env.REACT_APP_API_URL, {
