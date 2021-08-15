@@ -45,7 +45,7 @@ const MedicineForm = () => {
                 style={{width: 254}} 
                 id="outlined-basic" 
                 required 
-                label="Nome do Medicamento" 
+                label="Nome do Produto" 
                 variant="outlined"
                 onChange={(event) => setName(event.target.value)}
               />
