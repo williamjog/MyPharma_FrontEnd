@@ -16,7 +16,7 @@ import MedicinesContext from './context/MedicinesContext';
 import axios from 'axios';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import './App.css';
+import './style/App.css';
 
 const App = () => {
   const { medicines, setMedicines, isLoading, 
@@ -86,11 +86,11 @@ const App = () => {
                 <CardContent>
                   <Typography variant="h5" component="h2">
                     <div className="medicineTitle">
-                    {capitalizeFirstLetter(medicine.nome)}
+                      { capitalizeFirstLetter(medicine.nome) }
                     </div>
                   </Typography>
                   <Typography variant="body2" component="p">
-                    {capitalizeFirstLetter(medicine.apresentacao)}
+                    { capitalizeFirstLetter(medicine.apresentacao) }
                   </Typography>
                   <Typography id="eanCod" variant="body2" component="p">
                     Código EAN: {medicine.cod}

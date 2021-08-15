@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import MedicinesContext from '../context/MedicinesContext';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import '../App.css';
+import './style/App.css';
 
 const MedicineForm = () => {
 
