@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import LoadingImage from 'react-lottie-player';
+import LoadingAnimation from 'react-lottie-player';
 import * as loading from './loading.json';
 import logo from './logo-mypharma-original.png';
 import Button from '@material-ui/core/Button';
@@ -64,7 +64,7 @@ const App = () => {
   return (
     <>
      { isLoading ? 
-      <LoadingImage 
+      <LoadingAnimation 
         loop
         animationData={loading}
         play
