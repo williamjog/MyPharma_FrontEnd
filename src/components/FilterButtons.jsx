@@ -10,8 +10,11 @@ const FilterButtons = () => {
   const { medicines, setMedicines, minimumValue, maximumValue } = useContext(MedicinesContext);
 
   const filterMedicines = () => {
-    if (minimumValue < 0  || maximumValue < 0) {
+    if (minimumValue < 0 || maximumValue <= 0) {
       return alert('Não há valores negativos para estoque.');
+    }
+    if (minimumValue > maximumValue) {
+      alert('O valor mínimo precisa ser menor que o máximo');
     }
     const filteredMedicines = medicines.filter((medicine) => {
       return medicine.estoque >= minimumValue && medicine.estoque <= maximumValue;
