@@ -9,6 +9,7 @@ const MedicinesProvider = ({ children }) => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
+  const [isEditing, setIsEditing] = useState(false);
 
   const contextValues = {
     medicines,
@@ -24,7 +25,9 @@ const MedicinesProvider = ({ children }) => {
     price,
     setPrice,
     stock,
-    setStock
+    setStock,
+    isEditing,
+    setIsEditing
   }
 
   return (

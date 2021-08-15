@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import LoadingImage from 'react-lottie';
+import LoadingImage from 'react-lottie-player';
 import * as loading from './loading.json';
 import logo from './logo-mypharma-original.png';
 import Button from '@material-ui/core/Button';
@@ -15,7 +15,8 @@ import axios from 'axios';
 import './App.css';
 
 const App = () => {
-  const { medicines, isLoading, setMedicines, setIsLoading } = useContext(MedicinesContext);
+  const { medicines, isLoading, setMedicines, 
+          setIsLoading, setIsEditing, setCod } = useContext(MedicinesContext);
 
   useEffect(() => {
     const fetchMedicines = async () => {
@@ -25,15 +26,6 @@ const App = () => {
     }
     fetchMedicines();
   }, [isLoading, setIsLoading, setMedicines])
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loading.default,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
 
   const useStyles = makeStyles({
     root: {
@@ -79,10 +71,10 @@ const App = () => {
     <div>
      { isLoading ? 
       <LoadingImage 
-        options={defaultOptions} 
-        style={{  position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
-        height={400} 
-        width={350}
+        loop
+        animationData={loading}
+        play
+        style={{  position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', height: 400, width: 350 }}
       /> : 
       <div>
         <div className="header">
@@ -99,9 +91,9 @@ const App = () => {
                     </div>
                   </Typography>
                   <Typography variant="body2" component="p">
-                    {capitalizeFirstLetter(medicine.apresentacao)}.
+                    {capitalizeFirstLetter(medicine.apresentacao)}
                   </Typography>
-                  <Typography variant="body2" component="p">
+                  <Typography id="eanCod" variant="body2" component="p">
                     Código EAN: {medicine.cod}
                   </Typography>
                   <Typography variant="body2" component="p">
@@ -112,7 +104,17 @@ const App = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button variant="outlined" color="primary" size="small">Editar</Button>
+                  <Button 
+                    variant="outlined" 
+                    color="primary" 
+                    size="small"
+                    onClick={() => {
+                      setIsEditing(true)
+                      setCod(medicine.cod)
+                    }}
+                  >
+                    Editar
+                 </Button>
                   <Button 
                     variant="outlined" 
                     color="secondary" 
