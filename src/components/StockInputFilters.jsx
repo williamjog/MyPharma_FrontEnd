@@ -15,7 +15,7 @@ const StockFilters = () => {
           InputLabelProps={{
             shrink: true,
           }}
-          InputProps={{ inputProps: { min: 1 } }}
+          InputProps={{ inputProps: { min: 0 } }}
         />
       </div>
       <div className="stockInput">
