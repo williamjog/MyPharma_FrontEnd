@@ -44,7 +44,7 @@ const AddMedicineButton = () => {
   }
 
   const editMedicine = async () => {
-    if (!name || !description || !price || !stock) {
+    if (!name || !description || price === 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero!');
     }
     
