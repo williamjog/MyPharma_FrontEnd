@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import LoadingAnimation from 'react-lottie-player';
 import * as loading from './assets/loading.json';
-import logo from './logo-mypharma-original.png';
+import logo from './images/logo-mypharma-original.png';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
