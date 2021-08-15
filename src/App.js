@@ -68,7 +68,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <>
      { isLoading ? 
       <LoadingImage 
         loop
@@ -88,7 +88,8 @@ const App = () => {
           <img className="imgHeader" src={logo} alt="logo"/>
         </div>
         <div className="cardWrapper"> 
-          { medicines.map((medicine) => (
+          { medicines.map((medicine) => 
+          (
             <div className="medicineCard" key={medicine.cod}>
               <Card className={classes.root}>
                 <CardContent>
@@ -133,14 +134,14 @@ const App = () => {
                 </CardActions>
               </Card>
             </div>
-        )
+          )
         )}
         </div>
-        < MedicineForm />
-        < AddMedicineButton />
+        <MedicineForm />
+        <AddMedicineButton />
       </div>
      }
-    </div>
+    </>
   );
 }
 

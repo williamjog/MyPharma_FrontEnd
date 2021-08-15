@@ -47,6 +47,7 @@ const AddMedicineButton = () => {
     if (!name || !description || price <= 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
+
     await axios.put(process.env.REACT_APP_API_URL, {
       cod: Number(cod),
       name,
@@ -54,6 +55,7 @@ const AddMedicineButton = () => {
       price: formatPrice(price),
       stock: Number(stock)
     })
+    
     setIsEditing(false);
     setIsLoading(true);
   }
