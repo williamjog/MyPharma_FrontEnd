@@ -34,15 +34,14 @@
 }
 
 .addButton {
-  margin-top: 3em;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .input {
-  margin: auto;
-  width: 50%;
+  display: flex;
+  justify-content: center;
   padding: 10px;
 }
 
@@ -50,4 +49,35 @@
   margin: auto;
   width: 50%;
   padding: 10px;
+}
+
+.inputNumberWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.filterButtonsWrapper {
+  display: flex;
+}
+
+.filterButtons {
+  margin: 0.5em;
+}
+
+.stockInputWrapper {
+  display: flex;
+}
+
+.stockInput {
+  margin: 0.75em;
+}
+
+.codAndNameInput, .priceAndStockInput {
+  display: flex;
+  justify-content: center;
+}
+
+.individual {
+  margin: 1.4em;
 }

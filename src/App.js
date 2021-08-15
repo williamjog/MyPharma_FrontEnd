@@ -9,15 +9,19 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import MedicineForm from './components/MedicineForm';
+import StockFilters from './components/StockInputFilters';
+import FilterButtons from './components/FilterButtons';
 import AddOrEditMedicineButton from './components/AddOrEditMedicineButton';
 import MedicinesContext from './context/MedicinesContext';
 import axios from 'axios';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import './App.css';
 
 const App = () => {
-  const { medicines, isLoading, setMedicines, 
-          setIsLoading, setIsEditing, setCod } = useContext(MedicinesContext);
-
+  const { medicines, setMedicines, isLoading, 
+    setIsLoading, setIsEditing, setCod, } = useContext(MedicinesContext);
+  
   useEffect(() => {
     const fetchMedicines = async () => {
       const allMedicines = await axios.get(process.env.REACT_APP_API_URL);
@@ -28,20 +32,10 @@ const App = () => {
   }, [isLoading, setIsLoading, setMedicines])
 
   const useStyles = makeStyles({
-    root: {
-      minWidth: 275,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
+    root: { minWidth: 275 },
+    bullet: { display: 'inline-block', margin: '0 2px', transform: 'scale(0.8)' },
+    title: { fontSize: 14 },
+    pos: { marginBottom: 12 },
   });
 
   const classes = useStyles();
@@ -74,18 +68,15 @@ const App = () => {
         loop
         animationData={loading}
         play
-        style={{  
-          position: 'absolute', 
-          left: '50%', 
-          top: '50%', 
-          transform: 'translate(-50%, -50%)', 
-          height: 400, 
-          width: 350 
-        }}
+        style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', height: 400, width: 350}}
       /> : 
       <div>
-        <div className="header">
-          <img className="imgHeader" src={logo} alt="logo"/>
+        <header className="header">
+          <img className="imgHeader" src={logo} alt="MyPharma Logo"/>
+        </header>
+        <div className="inputNumberWrapper">
+          <StockFilters />
+          <FilterButtons />
         </div>
         <div className="cardWrapper"> 
           { medicines.map((medicine) => 
@@ -116,10 +107,8 @@ const App = () => {
                     variant="outlined" 
                     color="primary" 
                     size="small"
-                    onClick={() => {
-                      setIsEditing(true)
-                      setCod(medicine.cod)
-                    }}
+                    startIcon={<EditIcon />}
+                    onClick={() => { setIsEditing(true); setCod(medicine.cod); }}
                   >
                     Editar
                  </Button>
@@ -128,6 +117,7 @@ const App = () => {
                     color="secondary" 
                     size="small"
                     onClick={() => deleteMedicine(medicine)}
+                    startIcon={<DeleteIcon />}
                   >
                     Deletar
                   </Button>

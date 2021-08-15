@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MedicinesContext from './MedicinesContext';
 
+
 const MedicinesProvider = ({ children }) => {
   const [medicines, setMedicines] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,6 +11,8 @@ const MedicinesProvider = ({ children }) => {
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
+  const [minimumValue, setMinimumValue] = useState(0);
+  const [maximumValue, setMaximumValue] = useState(0);
 
   const contextValues = {
     medicines,
@@ -27,7 +30,11 @@ const MedicinesProvider = ({ children }) => {
     stock,
     setStock,
     isEditing,
-    setIsEditing
+    setIsEditing,
+    minimumValue,
+    setMinimumValue,
+    maximumValue,
+    setMaximumValue
   }
 
   return (

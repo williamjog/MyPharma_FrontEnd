@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import MedicinesContext from '../context/MedicinesContext';
 import axios from 'axios';
+import AddIcon from '@material-ui/icons/Add';
+import '../App.css';
 
 const AddMedicineButton = () => {
   const { cod, name, description, 
@@ -12,13 +14,11 @@ const AddMedicineButton = () => {
     if (!cod || !name || !description || price <= 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
-
     const doubled = medicines.find((medicine) =>  medicine.cod === Number(cod));
-    
+
     if (doubled) {
       return alert('Código EAN já cadastrado');
     }
-
     setIsLoading(true);
 
     await axios.post(process.env.REACT_APP_API_URL, {
@@ -47,7 +47,6 @@ const AddMedicineButton = () => {
     if (!name || !description || price <= 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
-
     await axios.put(process.env.REACT_APP_API_URL, {
       cod: Number(cod),
       name,
@@ -61,7 +60,12 @@ const AddMedicineButton = () => {
   
   return (
     <div className="addButton"> 
-      <Button onClick={isEditing? editMedicine : addMedicine} variant="outlined" color="primary" size="large">
+      <Button
+        startIcon={<AddIcon />}
+        onClick={isEditing? editMedicine : addMedicine}
+        variant="outlined"
+        color="primary"
+        size="large">
         { isEditing? <span>Confirmar</span> : <span>Adicionar</span>}
       </Button>
     </div>

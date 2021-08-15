@@ -31,33 +31,35 @@ const MedicineForm = () => {
   return (
       <div className="formWrapper">
         <form className={classes.root} noValidate autoComplete="off">
-          <div className="input">
-            <TextField
-              style={{width: 200}} 
-              id="outlined-basic" 
-              required={isEditing? false : true}
-              label={isEditing? cod : 'Código EAN'}
-              variant="outlined"
-              onChange={(event) => setCod(event.target.value)}
-              disabled={isEditing}
-              InputProps={{
-                readOnly: (isEditing ? true : false)
-              }}
-            />
+          <div className="codAndNameInput">
+            <div className="individual">
+              <TextField
+                style={{width: 250}} 
+                id="outlined-basic" 
+                required={isEditing? false : true}
+                label={isEditing? cod : 'Código EAN'}
+                variant="outlined"
+                onChange={(event) => setCod(event.target.value)}
+                disabled={isEditing}
+                InputProps={{
+                  readOnly: (isEditing ? true : false)
+                }}
+              />
+            </div>
+            <div className="individual">
+              <TextField 
+                style={{width: 250}} 
+                id="outlined-basic" 
+                required 
+                label="Nome do Medicamento" 
+                variant="outlined"
+                onChange={(event) => setName(event.target.value)}
+              />
+            </div>
           </div>
           <div className="input">
             <TextField 
-              style={{width: 250}} 
-              id="outlined-basic" 
-              required 
-              label="Nome do Medicamento" 
-              variant="outlined"
-              onChange={(event) => setName(event.target.value)}
-            />
-          </div>
-          <div className="input">
-            <TextField 
-              style={{width: 450}} 
+              style={{width: 550}} 
               id="outlined-basic" 
               required label="Descrição" 
               multiline 
@@ -66,24 +68,28 @@ const MedicineForm = () => {
               onChange={(event) => setDescription(event.target.value)}
             />
           </div>
-          <div className="input">
-            <TextField 
-              id="outlined-basic" 
-              required 
-              label="Preço" 
-              variant="outlined"
-              onChange={(event) => setPrice(event.target.value)}
-          />
+          <div className="priceAndStockInput">
+            <div className="individual"> 
+              <TextField 
+                id="outlined-basic" 
+                required 
+                label="Preço" 
+                variant="outlined"
+                onChange={(event) => setPrice(event.target.value)}
+                style={{width: 250}} 
+              />
+            </div>
+            <div className="individual">
+              <TextField 
+                id="outlined-basic"
+                required 
+                label="Estoque"
+                variant="outlined"
+                onChange={(event) => setStock(event.target.value)}
+                style={{width: 250}} 
+              />
+            </div>
           </div>
-          <div className="input">
-            <TextField 
-              id="outlined-basic"
-              required 
-              label="Estoque"
-              variant="outlined"
-              onChange={(event) => setStock(event.target.value)}
-            />
-        </div>
       </form>
       </div>
   )
