@@ -13,6 +13,10 @@ const MedicinesProvider = ({ children }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [minimumValue, setMinimumValue] = useState(0);
   const [maximumValue, setMaximumValue] = useState(0);
+  const [searchCod, setSearchCod] = useState(undefined);
+  const [isFinding, setIsFinding] = useState(false);
+  const [searchName, setSearchName] = useState(undefined);
+  const [searchDescription, setSearchDescription] = useState(undefined);
 
   const contextValues = {
     medicines,
@@ -34,7 +38,15 @@ const MedicinesProvider = ({ children }) => {
     minimumValue,
     setMinimumValue,
     maximumValue,
-    setMaximumValue
+    setMaximumValue,
+    searchCod,
+    setSearchCod,
+    isFinding,
+    setIsFinding,
+    searchName,
+    setSearchName,
+    searchDescription,
+    setSearchDescription
   }
 
   return (

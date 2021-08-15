@@ -3,11 +3,11 @@ import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import UndoIcon from '@material-ui/icons/Undo';
 import MedicinesContext from '../context/MedicinesContext';
+import axios from 'axios';
 import '../style/App.css';
 
 const FilterButtons = () => {
-  const { setIsLoading, medicines, setMedicines,
-    minimumValue, maximumValue } = useContext(MedicinesContext);
+  const { medicines, setMedicines, minimumValue, maximumValue } = useContext(MedicinesContext);
 
   const filterMedicines = () => {
     if (minimumValue < 0  || maximumValue < 0) {
@@ -17,6 +17,11 @@ const FilterButtons = () => {
       return medicine.estoque >= minimumValue && medicine.estoque <= maximumValue;
     });
     setMedicines(filteredMedicines);
+  }
+
+  const reset = async () => {
+    const allMedicines = await axios.get(process.env.REACT_APP_API_URL).then((response) => response.data);
+    setMedicines(allMedicines);
   }
 
   return (
@@ -37,7 +42,7 @@ const FilterButtons = () => {
           variant="outlined" 
           color="primary" 
           size="small"
-          onClick={() => setIsLoading(true)}
+          onClick={ reset }
           startIcon={ <UndoIcon /> }
         >
           Desfazer filtro

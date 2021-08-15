@@ -25,6 +25,9 @@ const MedicineForm = () => {
   return (
       <div className="formWrapper">
         <form className={classes.root} noValidate autoComplete="off">
+          <span className="medicineAdvertsing">
+            Preencha para cadastrar um novo produto
+          </span>
           <div className="codAndNameInput">
             <div className="individual">
               <TextField
@@ -56,7 +59,7 @@ const MedicineForm = () => {
               style={{width: 550}} 
               id="outlined-basic" 
               required label="Descrição" 
-              multiline 
+              multiline
               rows={4} 
               variant="outlined"
               onChange={(event) => setDescription(event.target.value)}

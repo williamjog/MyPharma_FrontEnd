@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MedicineForm from './components/MedicineForm';
 import StockFilters from './components/StockInputFilters';
 import FilterButtons from './components/FilterButtons';
+import FindMedicine from './components/FindMedicine'; 
 import AddOrEditMedicineButton from './components/AddOrEditMedicineButton';
 import MedicinesContext from './context/MedicinesContext';
 import axios from 'axios';
@@ -20,16 +21,20 @@ import './style/App.css';
 
 const App = () => {
   const { medicines, setMedicines, isLoading, 
-    setIsLoading, setIsEditing, setCod, } = useContext(MedicinesContext);
+    setIsLoading, setIsEditing, setCod, isFinding } = useContext(MedicinesContext);
   
   useEffect(() => {
     const fetchMedicines = async () => {
-      const allMedicines = await axios.get(process.env.REACT_APP_API_URL);
-      setMedicines(allMedicines.data);
-      setIsLoading(false);
+      if (!isFinding) {
+        const allMedicines = await axios.get(process.env.REACT_APP_API_URL);
+        setMedicines(allMedicines.data);
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+      }
     }
     fetchMedicines();
-  }, [isLoading, setIsLoading, setMedicines])
+  }, [isLoading, setIsLoading, setMedicines, isFinding])
 
   const useStyles = makeStyles({
     root: { minWidth: 275 },
@@ -41,6 +46,7 @@ const App = () => {
   const classes = useStyles();
 
   const capitalizeFirstLetter = (string) => {
+    console.log(string);
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
@@ -74,12 +80,15 @@ const App = () => {
         <header className="header">
           <img className="imgHeader" src={logo} alt="MyPharma Logo"/>
         </header>
+        <div>
+          <FindMedicine />
+        </div>
         <div className="inputNumberWrapper">
           <StockFilters />
           <FilterButtons />
         </div>
         <div className="cardWrapper"> 
-          { medicines.map((medicine) => 
+          { medicines && medicines.map((medicine) => 
           (
             <div className="medicineCard" key={medicine.cod}>
               <Card className={classes.root}>
