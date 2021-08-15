@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import MedicineForm from './components/MedicineForm';
-import AddMedicineButton from './components/AddMedicineButton';
+import AddOrEditMedicineButton from './components/AddOrEditMedicineButton';
 import MedicinesContext from './context/MedicinesContext';
 import axios from 'axios';
 import './App.css';
@@ -138,7 +138,7 @@ const App = () => {
         )}
         </div>
         <MedicineForm />
-        <AddMedicineButton />
+        <AddOrEditMedicineButton />
       </div>
      }
     </>
