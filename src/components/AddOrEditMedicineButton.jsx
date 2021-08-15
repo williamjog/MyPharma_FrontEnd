@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import MedicinesContext from '../context/MedicinesContext';
 import axios from 'axios';
 import AddIcon from '@material-ui/icons/Add';
-import './style/App.css';
+import '../style/App.css';
 
 const AddMedicineButton = () => {
   const { cod, name, description, 

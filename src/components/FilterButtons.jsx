@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import UndoIcon from '@material-ui/icons/Undo';
 import MedicinesContext from '../context/MedicinesContext';
-import './style/App.css';
+import '../style/App.css';
 
 const FilterButtons = () => {
   const { setIsLoading, medicines, setMedicines,

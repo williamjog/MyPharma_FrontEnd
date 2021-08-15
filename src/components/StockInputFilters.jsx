@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import MedicinesContext from '../context/MedicinesContext';
 import TextField from '@material-ui/core/TextField';
-import './style/App.css';
+import '../style/App.css';
 
 const StockFilters = () => {
   const { setMinimumValue, setMaximumValue } = useContext(MedicinesContext);
