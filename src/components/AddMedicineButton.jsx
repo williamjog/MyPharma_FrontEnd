@@ -38,15 +38,21 @@ const AddMedicineButton = () => {
     }]);
   }
 
+  const formatPrice = (currency) => {
+    const model = currency.toString().replace(',', '.');
+    return Number(model);
+  }
+
   const editMedicine = async () => {
     if (!name || !description || !price || !stock) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero!');
     }
+    
     await axios.put(process.env.REACT_APP_API_URL, {
       cod: Number(cod),
       name,
       description,
-      price: Number(price),
+      price: formatPrice(price),
       stock: Number(stock)
     })
     setIsEditing(false);
