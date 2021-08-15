@@ -81,3 +81,12 @@
 .individual {
   margin: 1.4em;
 }
+
+.editAndDeleteButtonWrapper {
+  display: flex;
+}
+
+.editAndDeleteButton {
+  display: flex;
+  margin: 0 0.75em 0.5em 0.75em;
+}

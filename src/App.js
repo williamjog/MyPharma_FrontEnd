@@ -103,24 +103,30 @@ const App = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button 
-                    variant="outlined" 
-                    color="primary" 
-                    size="small"
-                    startIcon={<EditIcon />}
-                    onClick={() => { setIsEditing(true); setCod(medicine.cod); }}
-                  >
-                    Editar
-                 </Button>
-                  <Button 
-                    variant="outlined" 
-                    color="secondary" 
-                    size="small"
-                    onClick={() => deleteMedicine(medicine)}
-                    startIcon={<DeleteIcon />}
-                  >
-                    Deletar
-                  </Button>
+                  <div className="editAndDeleteButtonWrapper">
+                    <div className="editAndDeleteButton">
+                      <Button 
+                        variant="outlined" 
+                        color="primary" 
+                        size="small"
+                        startIcon={<EditIcon />}
+                        onClick={() => { setIsEditing(true); setCod(medicine.cod); }}
+                      >
+                        Editar
+                    </Button>
+                    </div>
+                    <div className="editAndDeleteButton">
+                      <Button 
+                        variant="outlined" 
+                        color="secondary" 
+                        size="small"
+                        onClick={() => deleteMedicine(medicine)}
+                        startIcon={<DeleteIcon />}
+                      >
+                        Deletar
+                      </Button>
+                    </div>
+                  </div>
                 </CardActions>
               </Card>
             </div>

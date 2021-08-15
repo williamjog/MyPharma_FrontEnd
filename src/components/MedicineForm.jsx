@@ -34,7 +34,7 @@ const MedicineForm = () => {
           <div className="codAndNameInput">
             <div className="individual">
               <TextField
-                style={{width: 250}} 
+                style={{width: 254}} 
                 id="outlined-basic" 
                 required={isEditing? false : true}
                 label={isEditing? cod : 'Código EAN'}
@@ -48,7 +48,7 @@ const MedicineForm = () => {
             </div>
             <div className="individual">
               <TextField 
-                style={{width: 250}} 
+                style={{width: 254}} 
                 id="outlined-basic" 
                 required 
                 label="Nome do Medicamento" 
@@ -76,7 +76,7 @@ const MedicineForm = () => {
                 label="Preço" 
                 variant="outlined"
                 onChange={(event) => setPrice(event.target.value)}
-                style={{width: 250}} 
+                style={{width: 253}} 
               />
             </div>
             <div className="individual">
@@ -86,7 +86,7 @@ const MedicineForm = () => {
                 label="Estoque"
                 variant="outlined"
                 onChange={(event) => setStock(event.target.value)}
-                style={{width: 250}} 
+                style={{width: 253}} 
               />
             </div>
           </div>
