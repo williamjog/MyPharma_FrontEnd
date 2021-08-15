@@ -5,6 +5,7 @@
 Elaborar um CRUD, para cadastro de produtos, obedecendo o seguinte:
 * Interface em React
 * Banco de dados MongoDB.
+* Backend em Node.JS com o framework Express.JS
 
 
 ## Repositório contendo os arquivos que compõe o Front-End em React da aplicação.
