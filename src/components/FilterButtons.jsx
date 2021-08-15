@@ -14,7 +14,7 @@ const FilterButtons = () => {
       return alert('Não há valores negativos para estoque.');
     }
     if (minimumValue > maximumValue) {
-      alert('O valor mínimo precisa ser menor que o máximo');
+      return alert('O valor mínimo precisa ser menor que o máximo');
     }
     const filteredMedicines = medicines.filter((medicine) => {
       return medicine.estoque >= minimumValue && medicine.estoque <= maximumValue;
