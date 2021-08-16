@@ -38,9 +38,9 @@ const FindMedicine = () => {
   const findMedicineByItsDescription = useCallback(async () => {
     const searchDescriptionWithPlus = searchDescription.replace(/ /g, '+');
     const codeURL = `${process.env.REACT_APP_API_URL}search?q=${searchDescriptionWithPlus}`;
-    const medicineWithTheDescription = await axios.get(codeURL).then((response) => response.data);
-    if (medicineWithTheDescription) {
-      setMedicines(medicineWithTheDescription);
+    const medicinesWithTheDescription = await axios.get(codeURL);
+    if (medicinesWithTheDescription.data) {
+      setMedicines(medicinesWithTheDescription.data);
       setIsFinding(true);
       setIsLoading(true);
     } else {

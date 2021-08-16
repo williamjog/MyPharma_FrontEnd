@@ -24,7 +24,10 @@ const ProductCard = ({ medicine }) => {
 
   const classes = useStyles();
 
-  const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+  const capitalizeFirstLetter = (string) => {
+    if (string) return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   
   const formatPrice = (price) => price.toFixed(2).replace('.', ',');
 
