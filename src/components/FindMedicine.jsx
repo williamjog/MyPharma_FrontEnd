@@ -25,13 +25,12 @@ const FindMedicine = () => {
 
   const findMedicineByItsName = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}${searchName}`;
-    const medicineWithTheCod = await axios.get(codeURL);
-    if (medicineWithTheCod.data) {
-      setMedicines([medicineWithTheCod.data]);
+    const medicineWithTheName = await axios.get(codeURL);
+    if (medicineWithTheName.data) {
+      setMedicines([medicineWithTheName.data]);
       setIsFinding(true);
       setIsLoading(true);
     } else {
-      console.log(medicineWithTheCod)
       return alert('Produto não encontrado!');
     }
   },[searchName, setIsFinding, setIsLoading, setMedicines]);
