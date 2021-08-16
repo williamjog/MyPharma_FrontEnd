@@ -26,7 +26,7 @@ const ProductForm = () => {
       <div className="formWrapper">
         <form className={classes.root} noValidate autoComplete="off">
           <span className="medicineAdvertsing">
-            Preencha para cadastrar um novo produto
+            Preencha para cadastrar ou editar um produto
           </span>
           <div className="codAndNameInput">
             <div className="individual">
