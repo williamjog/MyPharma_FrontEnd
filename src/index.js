@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import MedicinesProvider from './context/MedicinesProvider';
+import ProductProvider from './context/ProductProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MedicinesProvider>
+    <ProductProvider>
       <App />
-    </MedicinesProvider>
+    </ProductProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

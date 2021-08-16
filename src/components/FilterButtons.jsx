@@ -2,30 +2,30 @@ import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import UndoIcon from '@material-ui/icons/Undo';
-import MedicinesContext from '../context/MedicinesContext';
+import ProductContext from '../context/ProductContext';
 import axios from 'axios';
 import '../style/App.css';
 
 const FilterButtons = () => {
-  const { medicines, setMedicines, minimumValue, maximumValue, setIsEditing,
-  setCod, setName, setDescription, setPrice, setStock } = useContext(MedicinesContext);
+  const { products, setProducts, minimumValue, maximumValue, setIsEditing,
+  setCod, setName, setDescription, setPrice, setStock } = useContext(ProductContext);
 
-  const filterMedicines = () => {
+  const filterProducts = () => {
     if (minimumValue < 0 || maximumValue <= 0 || !minimumValue || !maximumValue) {
       return alert('Não há valores negativos para estoque.');
     }
     if (minimumValue > maximumValue) {
       return alert('O valor mínimo precisa ser menor que o máximo');
     }
-    const filteredMedicines = medicines.filter((medicine) => {
-      return medicine.estoque >= minimumValue && medicine.estoque <= maximumValue;
+    const filteredMedicines = products.filter((product) => {
+      return product.estoque >= minimumValue && product.estoque <= maximumValue;
     });
-    setMedicines(filteredMedicines);
+    setProducts(filteredMedicines);
   }
 
   const reset = async () => {
-    const allMedicines = await axios.get(process.env.REACT_APP_API_URL).then((response) => response.data);
-    setMedicines(allMedicines);
+    const allProducts = await axios.get(process.env.REACT_APP_API_URL).then((response) => response.data);
+    setProducts(allProducts);
   }
 
   return (
@@ -35,7 +35,7 @@ const FilterButtons = () => {
           variant="outlined" 
           color="primary" 
           size="small"
-          onClick={() => filterMedicines()}
+          onClick={() => filterProducts()}
           startIcon={ <SearchIcon /> }
         >
           Filtrar

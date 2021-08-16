@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import MedicinesContext from '../context/MedicinesContext';
+import ProductContext from '../context/ProductContext';
 import TextField from '@material-ui/core/TextField';
 import '../style/App.css';
 
 const StockFilters = () => {
-  const { setMinimumValue, setMaximumValue } = useContext(MedicinesContext);
+  const { setMinimumValue, setMaximumValue } = useContext(ProductContext);
   return (
     <div className="stockInputWrapper">
       <div className="stockInput">

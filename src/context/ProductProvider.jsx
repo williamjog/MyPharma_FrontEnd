@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import MedicinesContext from './MedicinesContext';
+import ProductContext  from './ProductContext';
 
-
-const MedicinesProvider = ({ children }) => {
-  const [medicines, setMedicines] = useState([]);
+const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [cod, setCod] = useState('');
   const [name, setName] = useState('');
@@ -19,8 +18,8 @@ const MedicinesProvider = ({ children }) => {
   const [searchDescription, setSearchDescription] = useState(undefined);
 
   const contextValues = {
-    medicines,
-    setMedicines,
+    products,
+    setProducts,
     isLoading,
     setIsLoading,
     cod,
@@ -50,10 +49,10 @@ const MedicinesProvider = ({ children }) => {
   }
 
   return (
-    <MedicinesContext.Provider value={ contextValues }>
+    <ProductContext.Provider value={ contextValues }>
       { children }
-    </MedicinesContext.Provider>
+    </ProductContext.Provider >
   )
 }
 
-export default MedicinesProvider;
+export default ProductProvider;

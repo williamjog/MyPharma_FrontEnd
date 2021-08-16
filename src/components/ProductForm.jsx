@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import MedicinesContext from '../context/MedicinesContext';
+import ProductContext from '../context/ProductContext';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import '../style/App.css';
 
-const MedicineForm = () => {
+const ProductForm = () => {
 
   const { cod, setCod, setName, setDescription, 
-    setPrice, setStock, isEditing } = useContext(MedicinesContext);
+    setPrice, setStock, isEditing } = useContext(ProductContext);
 
   const styles = makeStyles({
     root: { minWidth: 275 },
@@ -92,4 +92,4 @@ const MedicineForm = () => {
   )
 }
 
-export default MedicineForm;
+export default ProductForm;

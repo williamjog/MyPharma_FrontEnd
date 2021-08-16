@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import MedicinesContext from '../context/MedicinesContext';
+import ProductContext from '../context/ProductContext';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,9 +11,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import axios from 'axios';
 import '../style/App.css';
 
-const ProductCard = ({ medicine }) => {
+const ProductCard = ({ product }) => {
   const { setIsLoading, setIsEditing, setCod,
-    setName, setDescription, setPrice, setStock } = useContext(MedicinesContext);
+    setName, setDescription, setPrice, setStock } = useContext(ProductContext);
  
   const useStyles = makeStyles({
     root: { minWidth: 275 },
@@ -28,43 +28,44 @@ const ProductCard = ({ medicine }) => {
     if (string) return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  
-  const formatPrice = (price) => price.toFixed(2).replace('.', ',');
+  const formatPrice = (price) => {
+    if (price) return price.toFixed(2).replace('.', ',');
+  }
 
-  const deleteMedicine = async (product) => {
+  const deleteProduct = async (deletedProduct) => {
     setIsLoading(true);
     await axios.delete(process.env.REACT_APP_API_URL, {
       data: {
-        cod: product.cod,
-        name: product.nome,
-        description: product.apresentacao,
-        price: product.preco,
-        stock: product.estoque
+        cod: deletedProduct.cod,
+        name: deletedProduct.nome,
+        description: deletedProduct.apresentacao,
+        price: deletedProduct.preco,
+        stock: deletedProduct.estoque
       }
     });
     setIsEditing(false);
   }
 
   return (
-      <div className="medicineCard" key={medicine.cod}>
+      <div className="medicineCard" key={product.cod}>
           <Card className={classes.root}>
             <CardContent>
               <Typography variant="h5" component="h2">
                 <div className="medicineTitle">
-                  { capitalizeFirstLetter(medicine.nome) }
+                  { capitalizeFirstLetter(product.nome) }
                 </div>
               </Typography>
               <Typography variant="body2" component="p">
-                { capitalizeFirstLetter(medicine.apresentacao) }
+                { capitalizeFirstLetter(product.apresentacao) }
               </Typography>
               <Typography id="eanCod" variant="body2" component="p">
-                Código EAN: {medicine.cod}
+                Código EAN: {product.cod}
               </Typography>
               <Typography variant="body2" component="p">
-                Preço: R$ {formatPrice(medicine.preco)} un.
+                Preço: R$ {formatPrice(product.preco)} un.
               </Typography>
               <Typography variant="body2" component="p">
-                Em estoque: {medicine.estoque} un.
+                Em estoque: {product.estoque} un.
               </Typography>
             </CardContent>
             <CardActions>
@@ -77,7 +78,7 @@ const ProductCard = ({ medicine }) => {
                     startIcon={<EditIcon />}
                     onClick={() => { 
                       setIsEditing(true); 
-                      setCod(medicine.cod);
+                      setCod(product.cod);
                       setName('');
                       setDescription('');
                       setPrice(0);
@@ -92,7 +93,7 @@ const ProductCard = ({ medicine }) => {
                     variant="outlined" 
                     color="secondary" 
                     size="small"
-                    onClick={() => deleteMedicine(medicine)}
+                    onClick={() => deleteProduct(product)}
                     startIcon={<DeleteIcon />}
                   >
                     Deletar

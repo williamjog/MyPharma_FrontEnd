@@ -3,30 +3,30 @@ import LoadingAnimation from 'react-lottie-player';
 import * as loading from './assets/loading.json';
 import logo from './images/logo-mypharma-original.png';
 import ProductCard from './components/ProductCard';
-import MedicineForm from './components/MedicineForm';
+import ProductForm from './components/ProductForm';
 import StockFilters from './components/StockInputFilters';
 import FilterButtons from './components/FilterButtons';
-import FindMedicine from './components/FindMedicine';
-import AddOrEditMedicineButton from './components/AddOrEditMedicineButton';
-import MedicinesContext from './context/MedicinesContext';
+import FindProduct from './components/FindProduct';
+import AddOrEditProductButton from './components/AddOrEditProductButton';
+import ProductContext from './context/ProductContext';
 import axios from 'axios';
 import './style/App.css';
 
 const App = () => {
-  const { medicines, setMedicines, isLoading, setIsLoading, isFinding } = useContext(MedicinesContext);
+  const { products, setProducts, isLoading, setIsLoading, isFinding } = useContext(ProductContext);
   
   useEffect(() => {
     const fetchMedicines = async () => {
       if (!isFinding) {
         const allMedicines = await axios.get(process.env.REACT_APP_API_URL);
-        setMedicines(allMedicines.data);
+        setProducts(allMedicines.data);
         setIsLoading(false);
       } else {
         setIsLoading(false);
       }
     }
     fetchMedicines();
-  }, [isLoading, setIsLoading, setMedicines, isFinding])
+  }, [isLoading, setIsLoading, setProducts, isFinding])
 
   return (
     <>
@@ -41,16 +41,16 @@ const App = () => {
         <header className="header">
           <img className="imgHeader" src={logo} alt="MyPharma Logo"/>
         </header>
-        <FindMedicine />
+        <FindProduct />
         <div className="inputNumberWrapper">
           <StockFilters />
           <FilterButtons />
         </div>
         <div className="cardWrapper"> 
-          { medicines && medicines.map((medicine) => <ProductCard key={medicine.cod} medicine={medicine}/> )}
+          { products && products.map((product) => <ProductCard key={product.cod} product={product}/> )}
         </div>
-        <MedicineForm />
-        <AddOrEditMedicineButton />
+        <ProductForm />
+        <AddOrEditProductButton />
       </div>
      }
     </>

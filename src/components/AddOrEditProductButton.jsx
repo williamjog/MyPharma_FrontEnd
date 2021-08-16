@@ -1,25 +1,25 @@
 import React, { useContext, useCallback } from 'react';
 import Button from '@material-ui/core/Button';
-import MedicinesContext from '../context/MedicinesContext';
+import ProductContext from '../context/ProductContext';
 import axios from 'axios';
 import AddIcon from '@material-ui/icons/Add';
 import '../style/App.css';
 
-const AddMedicineButton = () => {
+const AddOrEditProductButton = () => {
   const { cod, name, description, 
-          price, stock,  medicines, setMedicines, 
-          setIsLoading, isEditing, setIsEditing } = useContext(MedicinesContext);
+          price, stock, products, setProducts, 
+          setIsLoading, isEditing, setIsEditing } = useContext(ProductContext);
 
   const formatPrice = (currency) => {
     const model = currency.toString().replace(',', '.');
     return Number(model);
   }
         
-  const addMedicine = useCallback(async () => {
+  const addProduct = useCallback(async () => {
     if (!cod || !name || !description || price <= 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
-    const doubled = medicines.find((medicine) =>  medicine.cod === Number(cod));
+    const doubled = products.find((medicine) =>  medicine.cod === Number(cod));
     
     if (doubled) {
       return alert('Código EAN já cadastrado');
@@ -36,16 +36,16 @@ const AddMedicineButton = () => {
       stock: Number(stock),
     });
 
-    setMedicines([...medicines, {
+    setProducts([...products, {
       cod: Number(cod),
       nome: name,
       apresentacao: description,
       preco: Number(price),
       estoque: Number(stock),
     }]);
-  }, [cod, description, medicines, name, price, setIsLoading, setMedicines, stock]);
+  }, [cod, description, products, name, price, setIsLoading, setProducts, stock]);
 
-  const editMedicine = useCallback(async () => {
+  const editProduct = useCallback(async () => {
     if (!name || !description || Number(price) <= 0 || Number(stock) < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
@@ -64,7 +64,7 @@ const AddMedicineButton = () => {
     <div className="addButton"> 
       <Button
         startIcon={<AddIcon />}
-        onClick={isEditing? editMedicine : addMedicine}
+        onClick={isEditing? editProduct : addProduct}
         variant="outlined"
         color="primary"
         size="large"
@@ -75,4 +75,4 @@ const AddMedicineButton = () => {
   );
 }
 
-export default AddMedicineButton;
+export default AddOrEditProductButton;

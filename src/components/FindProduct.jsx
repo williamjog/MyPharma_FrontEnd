@@ -1,52 +1,52 @@
 import React, { useContext, useCallback } from 'react';
 import TextField from '@material-ui/core/TextField';
-import MedicinesContext from '../context/MedicinesContext';
+import ProductContext from '../context/ProductContext';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import '../style/App.css';
 import axios from 'axios';
 
-const FindMedicine = () => {
-  const { setMedicines, setIsLoading, searchCod, 
+const FindProduct = () => {
+  const { setProducts, setIsLoading, searchCod, 
     setSearchCod, setIsFinding, searchName, 
-    setSearchName, searchDescription, setSearchDescription } = useContext(MedicinesContext);
+    setSearchName, searchDescription, setSearchDescription } = useContext(ProductContext);
 
-  const findMedicineByItsCode = useCallback(async () => {
+  const findProductByItsCode = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}product/${searchCod}`;
     const medicineWithTheCod = await axios.get(codeURL);
     if (medicineWithTheCod.data) {
-      setMedicines([medicineWithTheCod.data]);
+      setProducts([medicineWithTheCod.data]);
       setIsFinding(true);
       setIsLoading(true);
     } else {
       return alert('Produto não encontrado!');
     }
-  },[searchCod, setIsFinding, setIsLoading, setMedicines]);
+  },[searchCod, setIsFinding, setIsLoading, setProducts]);
 
-  const findMedicineByItsName = useCallback(async () => {
+  const findProductByItsName = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}${searchName}`;
     const medicineWithTheName = await axios.get(codeURL);
     if (medicineWithTheName.data) {
-      setMedicines([medicineWithTheName.data]);
+      setProducts([medicineWithTheName.data]);
       setIsFinding(true);
       setIsLoading(true);
     } else {
       return alert('Produto não encontrado!');
     }
-  },[searchName, setIsFinding, setIsLoading, setMedicines]);
+  },[searchName, setIsFinding, setIsLoading, setProducts]);
 
-  const findMedicineByItsDescription = useCallback(async () => {
+  const findProductByItsDescription = useCallback(async () => {
     const searchDescriptionWithPlus = searchDescription.replace(/ /g, '+');
     const codeURL = `${process.env.REACT_APP_API_URL}search?q=${searchDescriptionWithPlus}`;
     const medicinesWithTheDescription = await axios.get(codeURL);
     if (medicinesWithTheDescription.data) {
-      setMedicines(medicinesWithTheDescription.data);
+      setProducts(medicinesWithTheDescription.data);
       setIsFinding(true);
       setIsLoading(true);
     } else {
       return alert('Produto não encontrado!');
     }
-  },[searchDescription, setIsFinding, setIsLoading, setMedicines]);
+  },[searchDescription, setIsFinding, setIsLoading, setProducts]);
 
   return (
     <div>
@@ -69,7 +69,7 @@ const FindMedicine = () => {
             color="primary" 
             size="small"
             startIcon={<SearchIcon />}
-            onClick={ findMedicineByItsCode }
+            onClick={ findProductByItsCode }
           >
           </Button>
         </div>
@@ -92,7 +92,7 @@ const FindMedicine = () => {
             color="primary" 
             size="small"
             startIcon={<SearchIcon />}
-            onClick={ findMedicineByItsName }
+            onClick={ findProductByItsName }
             label="Buscar Pelo Nome"
           >
           </Button>
@@ -116,7 +116,7 @@ const FindMedicine = () => {
             color="primary" 
             size="small"
             startIcon={<SearchIcon />}
-            onClick={ findMedicineByItsDescription }
+            onClick={ findProductByItsDescription }
             id="outlined-basic"
           >
           </Button>
@@ -126,4 +126,4 @@ const FindMedicine = () => {
   )
 }
 
-export default FindMedicine;
+export default FindProduct;
