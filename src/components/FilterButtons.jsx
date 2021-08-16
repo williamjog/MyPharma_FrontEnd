@@ -11,7 +11,7 @@ const FilterButtons = () => {
   setCod, setName, setDescription, setPrice, setStock } = useContext(MedicinesContext);
 
   const filterMedicines = () => {
-    if (minimumValue <= 0 || maximumValue <= 0 || !minimumValue || !maximumValue) {
+    if (minimumValue < 0 || maximumValue <= 0 || !minimumValue || !maximumValue) {
       return alert('Não há valores negativos para estoque.');
     }
     if (minimumValue > maximumValue) {
