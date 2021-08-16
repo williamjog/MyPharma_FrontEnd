@@ -17,9 +17,8 @@ const App = () => {
   
   useEffect(() => {
     const fetchMedicines = async () => {
-      console.log(process.env.REACT_APP_API_URL);
       if (!isFinding) {
-        const allMedicines = await axios.get('http://localhost:3001/');
+        const allMedicines = await axios.get(process.env.REACT_APP_API_URL);
         setMedicines(allMedicines.data);
         setIsLoading(false);
       } else {
