@@ -42,9 +42,7 @@ const App = () => {
         <header className="header">
           <img className="imgHeader" src={logo} alt="MyPharma Logo"/>
         </header>
-        <div>
-          <FindMedicine />
-        </div>
+        <FindMedicine />
         <div className="inputNumberWrapper">
           <StockFilters />
           <FilterButtons />
