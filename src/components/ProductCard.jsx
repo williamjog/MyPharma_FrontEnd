@@ -33,7 +33,6 @@ const ProductCard = ({ product }) => {
   }
 
   const deleteProduct = async (deletedProduct) => {
-    setIsLoading(true);
     await axios.delete(process.env.REACT_APP_API_URL, {
       data: {
         cod: deletedProduct.cod,
@@ -43,6 +42,7 @@ const ProductCard = ({ product }) => {
         stock: deletedProduct.estoque
       }
     });
+    setIsLoading(true);
     setIsEditing(false);
   }
 
