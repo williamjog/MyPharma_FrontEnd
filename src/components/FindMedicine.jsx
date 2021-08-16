@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import TextField from '@material-ui/core/TextField';
 import MedicinesContext from '../context/MedicinesContext';
 import Button from '@material-ui/core/Button';
@@ -11,7 +11,7 @@ const FindMedicine = () => {
     setSearchCod, setIsFinding, searchName, 
     setSearchName, searchDescription, setSearchDescription } = useContext(MedicinesContext);
 
-  const findMedicineByItsCode = async () => {
+  const findMedicineByItsCode = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}product/${searchCod}`;
     const medicineWithTheCod = await axios.get(codeURL);
     if (medicineWithTheCod.data) {
@@ -21,9 +21,9 @@ const FindMedicine = () => {
     } else {
       return alert('Produto não encontrado!');
     }
-  }
+  },[searchCod, setIsFinding, setIsLoading, setMedicines]);
 
-  const findMedicineByItsName = async () => {
+  const findMedicineByItsName = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}${searchName}`;
     const medicineWithTheCod = await axios.get(codeURL);
     if (medicineWithTheCod.data) {
@@ -34,9 +34,9 @@ const FindMedicine = () => {
       console.log(medicineWithTheCod)
       return alert('Produto não encontrado!');
     }
-  }
+  },[searchName, setIsFinding, setIsLoading, setMedicines]);
 
-  const findMedicineByItsDescription = async () => {
+  const findMedicineByItsDescription = useCallback(async () => {
     const searchDescriptionWithPlus = searchDescription.replace(/ /g, '+');
     const codeURL = `${process.env.REACT_APP_API_URL}search?q=${searchDescriptionWithPlus}`;
     const medicineWithTheDescription = await axios.get(codeURL).then((response) => response.data);
@@ -47,7 +47,7 @@ const FindMedicine = () => {
     } else {
       return alert('Produto não encontrado!');
     }
-  }
+  },[searchDescription, setIsFinding, setIsLoading, setMedicines]);
 
   return (
     <div>
