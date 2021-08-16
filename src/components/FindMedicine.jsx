@@ -31,6 +31,7 @@ const FindMedicine = () => {
       setIsFinding(true);
       setIsLoading(true);
     } else {
+      console.log(medicineWithTheCod)
       return alert('Produto não encontrado!');
     }
   }

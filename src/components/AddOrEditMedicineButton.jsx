@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import Button from '@material-ui/core/Button';
 import MedicinesContext from '../context/MedicinesContext';
 import axios from 'axios';
@@ -10,7 +10,7 @@ const AddMedicineButton = () => {
           price, stock,  medicines, setMedicines, 
           setIsLoading, isEditing, setIsEditing } = useContext(MedicinesContext);
   
-  const addMedicine = async () => {
+  const addMedicine = useCallback(async () => {
     if (!cod || !name || !description || price <= 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
@@ -36,14 +36,14 @@ const AddMedicineButton = () => {
       preco: Number(price),
       estoque: Number(stock),
     }]);
-  }
+  }, [cod, description, medicines, name, price, setIsLoading, setMedicines, stock]);
 
   const formatPrice = (currency) => {
     const model = currency.toString().replace(',', '.');
     return Number(model);
   }
 
-  const editMedicine = async () => {
+  const editMedicine = useCallback(async () => {
     if (!name || !description || Number(price) <= 0 || Number(stock) < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
@@ -56,7 +56,7 @@ const AddMedicineButton = () => {
     })
     setIsEditing(false);
     setIsLoading(true);
-  }
+  },[cod, description, name, price, setIsEditing, setIsLoading, stock]);
   
   return (
     <div className="addButton"> 
