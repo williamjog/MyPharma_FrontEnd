@@ -65,7 +65,8 @@ const AddMedicineButton = () => {
         onClick={isEditing? editMedicine : addMedicine}
         variant="outlined"
         color="primary"
-        size="large">
+        size="large"
+      >
         { isEditing? <span>Confirmar</span> : <span>Adicionar</span>}
       </Button>
     </div>
