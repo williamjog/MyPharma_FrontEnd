@@ -7,7 +7,8 @@ import axios from 'axios';
 import '../style/App.css';
 
 const FilterButtons = () => {
-  const { medicines, setMedicines, minimumValue, maximumValue } = useContext(MedicinesContext);
+  const { medicines, setMedicines, minimumValue, maximumValue, setIsEditing,
+  setCod, setName, setDescription, setPrice, setStock } = useContext(MedicinesContext);
 
   const filterMedicines = () => {
     if (minimumValue < 0 || maximumValue <= 0) {
@@ -45,7 +46,15 @@ const FilterButtons = () => {
           variant="outlined" 
           color="primary" 
           size="small"
-          onClick={ reset }
+          onClick={ () => {
+            reset();
+            setIsEditing(false);
+            setCod('');
+            setName('');
+            setDescription('');
+            setPrice(0);
+            setStock('');
+          }}
           startIcon={ <UndoIcon /> }
         >
           Desfazer filtro

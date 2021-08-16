@@ -44,7 +44,7 @@ const AddMedicineButton = () => {
   }
 
   const editMedicine = async () => {
-    if (!name || !description || price <= 0 || stock < 0) {
+    if (!name || !description || Number(price) <= 0 || Number(stock) < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
     await axios.put(process.env.REACT_APP_API_URL, {
@@ -54,8 +54,8 @@ const AddMedicineButton = () => {
       price: formatPrice(price),
       stock: Number(stock)
     })
-    setIsLoading(true);
     setIsEditing(false);
+    setIsLoading(true);
   }
   
   return (
