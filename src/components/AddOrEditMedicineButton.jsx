@@ -9,23 +9,30 @@ const AddMedicineButton = () => {
   const { cod, name, description, 
           price, stock,  medicines, setMedicines, 
           setIsLoading, isEditing, setIsEditing } = useContext(MedicinesContext);
-  
+
+  const formatPrice = (currency) => {
+    const model = currency.toString().replace(',', '.');
+    return Number(model);
+  }
+        
   const addMedicine = useCallback(async () => {
     if (!cod || !name || !description || price <= 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
     const doubled = medicines.find((medicine) =>  medicine.cod === Number(cod));
-
+    
     if (doubled) {
       return alert('Código EAN já cadastrado');
     }
     setIsLoading(true);
 
+    const formatedPrice = formatPrice(price);
+
     await axios.post(process.env.REACT_APP_API_URL, {
       cod: Number(cod),
       name,
       description,
-      price: Number(price),
+      price: formatedPrice,
       stock: Number(stock),
     });
 
@@ -37,11 +44,6 @@ const AddMedicineButton = () => {
       estoque: Number(stock),
     }]);
   }, [cod, description, medicines, name, price, setIsLoading, setMedicines, stock]);
-
-  const formatPrice = (currency) => {
-    const model = currency.toString().replace(',', '.');
-    return Number(model);
-  }
 
   const editMedicine = useCallback(async () => {
     if (!name || !description || Number(price) <= 0 || Number(stock) < 0) {
