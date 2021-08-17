@@ -7,12 +7,15 @@ import axios from 'axios';
 import '../style/App.css';
 
 const FilterButtons = () => {
-  const { products, setProducts, minimumValue, maximumValue, setIsEditing,
-  setCod, setName, setDescription, setPrice, setStock } = useContext(ProductContext);
+  const { products, setProducts, minimumValue, maximumValue, setMaximumValue,
+    setIsEditing, setCod, setName, setDescription, setPrice, setStock } = useContext(ProductContext);
 
   const filterProducts = () => {
     if (minimumValue < 0 || maximumValue <= 0 || !minimumValue || !maximumValue) {
       return alert('Não há valores negativos para estoque.');
+    }
+    if (!maximumValue) {
+      setMaximumValue(0);
     }
     if (Number(minimumValue) > Number(maximumValue)) {
       return alert('O valor mínimo precisa ser menor que o máximo');
