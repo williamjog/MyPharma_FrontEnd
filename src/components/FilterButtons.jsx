@@ -19,10 +19,10 @@ const FilterButtons = () => {
       if (Number(minimumValue) > Number(maximumValue)) {
         return alert('O valor mínimo precisa ser menor que o máximo');
       }
-      const filteredMedicines = products.filter((product) => {
+      const filteredProducts = products.filter((product) => {
         return product.estoque >= minimumValue && product.estoque <= maximumValue
       });
-      setProducts(filteredMedicines);
+      setProducts(filteredProducts);
     } else {
       const filteredMedicines = products.filter((product) => {
         return product.estoque >= minimumValue;
