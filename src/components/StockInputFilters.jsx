@@ -8,7 +8,8 @@ const StockFilters = () => {
   return (
     <div className="stockInputWrapper" id="stockWrapper">
       <div className="stockInput" id="min">
-        <TextField 
+        <TextField
+          className="inputNumeric"
           id="standard-number"
           label="Estoque Mínimo"
           type="number"
@@ -18,7 +19,8 @@ const StockFilters = () => {
         />
       </div>
       <div className="stockInput" id="max">
-        <TextField 
+        <TextField
+          className="inputNumeric"
           id="standard-number"
           label="Estoque Máximo"
           type="number"

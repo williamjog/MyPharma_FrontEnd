@@ -68,7 +68,7 @@ const FindProduct = () => {
     <div>
       <div className={classesName}>
         <div className="group1">
-          <TextField 
+          <TextField
             label="Buscar pelo Código"
             type="text"
             onChange={(event) => setSearchCod(event.target.value)}
