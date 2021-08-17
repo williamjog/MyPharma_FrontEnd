@@ -115,7 +115,7 @@ const FindProduct = () => {
       <div className="group3Wraper">
         <div className="group3">
             <TextField 
-              label="Buscar pela descrição"
+              label="Buscar pela Descrição"
               id="outlined-basic"
               multiline
               rows={4}
