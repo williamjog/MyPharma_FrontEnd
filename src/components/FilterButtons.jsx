@@ -65,7 +65,7 @@ const FilterButtons = () => {
           }}
           startIcon={ <UndoIcon /> }
         >
-          Desfazer filtro
+          Desfazer filtros
         </Button>
       </div>
     </div>

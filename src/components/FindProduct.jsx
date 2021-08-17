@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import ProductContext from '../context/ProductContext';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
+import { makeStyles } from '@material-ui/core/styles';
 import '../style/App.css';
 import axios from 'axios';
 
@@ -10,6 +11,19 @@ const FindProduct = () => {
   const { setProducts, setIsLoading, searchCod, 
     setSearchCod, setIsFinding, searchName, 
     setSearchName, searchDescription, setSearchDescription } = useContext(ProductContext);
+
+  const styles = makeStyles({
+    root: { minWidth: 275 },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: { fontSize: 14 },
+    pos: { marginBottom: 12 },
+  });
+
+  const classes = styles();
 
   const findProductByItsCode = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}product/${searchCod}`;
@@ -48,15 +62,16 @@ const FindProduct = () => {
     }
   },[searchDescription, setIsFinding, setIsLoading, setProducts]);
 
+  const classesName = `group1Wraper ${classes.root}`;
+  
   return (
     <div>
-      <div className="group1Wraper">
+      <div className={classesName}>
         <div className="group1">
           <TextField 
             label="Buscar pelo Código"
             type="text"
             onChange={(event) => setSearchCod(event.target.value)}
-            style={{width: 250}} 
             id="outlined-basic" 
             multiline
             rows={1} 
@@ -79,7 +94,6 @@ const FindProduct = () => {
           <TextField 
             label="Buscar pelo Nome"
             onChange={(event) => setSearchName(event.target.value)}
-            style={{width: 250}} 
             id="outlined-basic" 
             multiline
             rows={1} 
@@ -102,7 +116,6 @@ const FindProduct = () => {
         <div className="group3">
             <TextField 
               label="Buscar pela descrição"
-              style={{width: 550}} 
               id="outlined-basic"
               multiline
               rows={4}

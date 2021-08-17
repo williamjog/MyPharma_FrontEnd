@@ -23,18 +23,17 @@ const ProductForm = () => {
   const classes = styles();
 
   return (
-      <div className="formWrapper">
+      <div>
         <form className={classes.root} noValidate autoComplete="off">
-          <span className="medicineAdvertsing">
+          <span className="medicineAdvertsing" id="frase">
             Preencha para cadastrar ou editar um produto
           </span>
           <div className="codAndNameInput">
             <div className="individual">
               <TextField
-                style={{width: 254}} 
                 id="outlined-basic" 
                 required={isEditing? false : true}
-                label={isEditing? cod : 'Código EAN'}
+                label={isEditing? cod : 'Código'}
                 variant="outlined"
                 onChange={(event) => setCod(event.target.value)}
                 disabled={isEditing}
@@ -45,18 +44,16 @@ const ProductForm = () => {
             </div>
             <div className="individual">
               <TextField 
-                style={{width: 254}} 
                 id="outlined-basic" 
                 required 
-                label="Nome do Produto" 
+                label="Nome" 
                 variant="outlined"
                 onChange={(event) => setName(event.target.value)}
               />
             </div>
           </div>
           <div className="input">
-            <TextField 
-              style={{width: 550}} 
+            <TextField
               id="outlined-basic" 
               required label="Descrição" 
               multiline
@@ -73,7 +70,6 @@ const ProductForm = () => {
                 label="Preço" 
                 variant="outlined"
                 onChange={(event) => setPrice(event.target.value)}
-                style={{width: 253}} 
               />
             </div>
             <div className="individual">
@@ -83,7 +79,6 @@ const ProductForm = () => {
                 label="Estoque"
                 variant="outlined"
                 onChange={(event) => setStock(event.target.value)}
-                style={{width: 253}} 
               />
             </div>
           </div>

@@ -42,9 +42,11 @@ const App = () => {
           <img className="imgHeader" src={logo} alt="MyPharma Logo"/>
         </header>
         <FindProduct />
-        <div className="inputNumberWrapper">
+        <div className="numericFilter">
           <StockFilters />
-          <FilterButtons />
+        </div>
+        <div className="inputNumberWrapper">
+          <FilterButtons /> 
         </div>
         <div className="cardWrapper"> 
           { products && products.map((product) => <ProductCard key={product.cod} product={product}/> )}

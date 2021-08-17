@@ -6,8 +6,8 @@ import '../style/App.css';
 const StockFilters = () => {
   const { setMinimumValue, setMaximumValue } = useContext(ProductContext);
   return (
-    <div className="stockInputWrapper">
-      <div className="stockInput">
+    <div className="stockInputWrapper" id="stockWrapper">
+      <div className="stockInput" id="min">
         <TextField 
           id="standard-number"
           label="Estoque Mínimo"
@@ -17,7 +17,7 @@ const StockFilters = () => {
           InputProps={{ inputProps: { min: 0 } }}
         />
       </div>
-      <div className="stockInput">
+      <div className="stockInput" id="max">
         <TextField 
           id="standard-number"
           label="Estoque Máximo"
