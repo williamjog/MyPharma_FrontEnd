@@ -96,6 +96,12 @@
   margin: 0.5em;
 }
 
+@media (min-width: 900px) {
+  .MuiFormControl-root , .MuiFormControl-root {
+    width: 250px !important;
+  }
+}
+
 #numericFilter {
   display: flex;
   justify-content: center;
