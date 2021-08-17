@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import ProductContext from '../context/ProductContext';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
     if (price) return price.toFixed(2).replace('.', ',');
   }
 
-  const deleteProduct = async (deletedProduct) => {
+  const deleteProduct = useCallback(async (deletedProduct) => {
     await axios.delete(process.env.REACT_APP_API_URL, {
       data: {
         cod: deletedProduct.cod,
@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
     });
     setIsLoading(true);
     setIsEditing(false);
-  }
+  }, [setIsEditing, setIsLoading])
 
   return (
       <div className="medicineCard" key={product.cod}>
