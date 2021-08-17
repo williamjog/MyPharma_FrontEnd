@@ -12,17 +12,23 @@ const FilterButtons = () => {
           setName, setDescription, setPrice, setStock } = useContext(ProductContext);
 
   const filterProducts = () => {
-    if (maximumValue && (minimumValue < 0 || maximumValue <= 0 || !minimumValue || !maximumValue)) {
-      return alert('Não há valores negativos para estoque.');
+    if (maximumValue) {
+      if (Number(minimumValue) < 0 || Number(maximumValue) <= 0 || !minimumValue || !maximumValue) {
+        return alert('Não há valores negativos para estoque.');
+      }
+      if (Number(minimumValue) > Number(maximumValue)) {
+        return alert('O valor mínimo precisa ser menor que o máximo');
+      }
+      const filteredMedicines = products.filter((product) => {
+        return product.estoque >= minimumValue && product.estoque <= maximumValue
+      });
+      setProducts(filteredMedicines);
+    } else {
+      const filteredMedicines = products.filter((product) => {
+        return product.estoque >= minimumValue;
+      });
+      setProducts(filteredMedicines);
     }
-    if (maximumValue && Number(minimumValue) > Number(maximumValue)) {
-      return alert('O valor mínimo precisa ser menor que o máximo');
-    }
-    const filteredMedicines = products.filter((product) => {
-      return maximumValue ? product.estoque >= minimumValue && product.estoque <= maximumValue :
-      product.estoque >= minimumValue;
-    });
-    setProducts(filteredMedicines);
   }
 
   const reset = async () => {
