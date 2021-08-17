@@ -88,7 +88,7 @@ const ProductForm = () => {
             </div>
           </div>
       </form>
-      </div>
+    </div>
   )
 }
 
