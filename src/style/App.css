@@ -24,9 +24,10 @@
 
 .cardWrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   margin: auto;
+  width: 75%;
 }
 
 .medicineCard {
