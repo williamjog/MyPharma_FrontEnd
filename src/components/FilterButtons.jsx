@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
-import SearchIcon from '@material-ui/icons/Search';
+import FilterListIcon from '@material-ui/icons/FilterList';
 import UndoIcon from '@material-ui/icons/Undo';
 import ProductContext from '../context/ProductContext';
 import axios from 'axios';
@@ -44,7 +44,7 @@ const FilterButtons = () => {
           color="primary" 
           size="small"
           onClick={() => filterProducts()}
-          startIcon={ <SearchIcon /> }
+          startIcon={ <FilterListIcon /> }
         >
           Filtrar
         </Button>
