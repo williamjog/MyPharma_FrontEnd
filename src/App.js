@@ -16,7 +16,7 @@ const App = () => {
   const { products, setProducts, isLoading, setIsLoading, isFinding } = useContext(ProductContext);
   
   useEffect(() => {
-    const fetchMedicines = async () => {
+    const fetchProducts = async () => {
       if (!isFinding) {
         const allMedicines = await axios.get(process.env.REACT_APP_API_URL);
         setProducts(allMedicines.data);
@@ -25,7 +25,7 @@ const App = () => {
         setIsLoading(false);
       }
     }
-    fetchMedicines();
+    fetchProducts();
   }, [isLoading, setIsLoading, setProducts, isFinding])
 
   return (
