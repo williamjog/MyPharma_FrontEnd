@@ -28,59 +28,55 @@ const ProductForm = () => {
           <span className="medicineAdvertsing" id="frase">
             Preencha para cadastrar ou editar um produto
           </span>
-          <div className="codAndNameInput">
-            <div className="individual">
-              <TextField
-                id="outlined-basic" 
-                required={isEditing? false : true}
-                label={isEditing? cod : 'Código'}
-                variant="outlined"
-                onChange={(event) => setCod(event.target.value)}
-                disabled={isEditing}
-                InputProps={{
-                  readOnly: (isEditing ? true : false)
-                }}
-              />
-            </div>
-            <div className="individual">
-              <TextField 
-                id="outlined-basic" 
-                required 
-                label="Nome" 
-                variant="outlined"
-                onChange={(event) => setName(event.target.value)}
-              />
-            </div>
+          <div className="individual">
+            <TextField
+              id="outlined-basic" 
+              required={isEditing? false : true}
+              label={isEditing? cod : 'Código'}
+              variant="outlined"
+              onChange={(event) => setCod(event.target.value)}
+              disabled={isEditing}
+              InputProps={{
+                readOnly: (isEditing ? true : false)
+              }}
+            />
           </div>
-          <div className="input">
+          <div className="individual">
+            <TextField 
+              id="outlined-basic" 
+              required 
+              label="Nome" 
+              variant="outlined"
+              onChange={(event) => setName(event.target.value)}
+            />
+          </div>
+          <div className="individual">
             <TextField
               id="outlined-basic" 
               required label="Descrição" 
               multiline
-              rows={4} 
+              rows={4}
               variant="outlined"
               onChange={(event) => setDescription(event.target.value)}
             />
           </div>
-          <div className="priceAndStockInput">
-            <div className="individual"> 
-              <TextField 
-                id="outlined-basic" 
-                required 
-                label="Preço" 
-                variant="outlined"
-                onChange={(event) => setPrice(event.target.value)}
-              />
-            </div>
-            <div className="individual">
-              <TextField 
-                id="outlined-basic"
-                required 
-                label="Estoque"
-                variant="outlined"
-                onChange={(event) => setStock(event.target.value)}
-              />
-            </div>
+          <div className="individual"> 
+            <TextField 
+              id="outlined-basic" 
+              required 
+              label="Preço" 
+              variant="outlined"
+              onChange={(event) => setPrice(event.target.value)}
+            />
+          </div>
+          <div className="individual">
+            <TextField 
+              id="outlined-basic"
+              required 
+              label="Estoque"
+              variant="outlined"
+              onChange={(event) => setStock(event.target.value)}
+            />
           </div>
       </form>
     </div>

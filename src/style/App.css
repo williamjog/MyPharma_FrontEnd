@@ -26,6 +26,11 @@
     justify-content: center;
     margin: 1em;
   }
+
+  .individual {
+    display: flex;
+    justify-content: center;
+  }
 };
 
 .title, .advertising {
@@ -68,12 +73,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.input {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
 }
 
 .formWrapper {
@@ -123,6 +122,8 @@
 }
 
 .individual {
+  display: flex;
+  justify-content: center;
   margin: 1.4em;
 }
 
@@ -159,4 +160,8 @@
 
 .inputNumeric {
   width: 150px !important;
+}
+
+.jss25 {
+  box-shadow: 0 0 1em #666;
 }
