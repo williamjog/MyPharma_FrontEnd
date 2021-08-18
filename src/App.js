@@ -18,8 +18,8 @@ const App = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       if (!isFinding) {
-        const allMedicines = await axios.get(process.env.REACT_APP_API_URL);
-        setProducts(allMedicines.data);
+        const allProducts = await axios.get(process.env.REACT_APP_API_URL);
+        setProducts(allProducts.data);
         setIsLoading(false);
       } else {
         setIsLoading(false);
