@@ -12,8 +12,6 @@ const FilterButtons = () => {
           setName, setDescription, setPrice, setStock } = useContext(ProductContext);
 
   const filterProducts = () => {
-    console.log(minimumValue);
-    console.log(maximumValue)
     if (maximumValue) {
       if (Number(minimumValue) < 0 || Number(maximumValue) <= 0) {
         return alert('Não há valores negativos para estoque.');
