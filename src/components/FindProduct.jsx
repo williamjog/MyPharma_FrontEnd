@@ -27,9 +27,9 @@ const FindProduct = () => {
 
   const findProductByItsCode = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}product/${searchCod}`;
-    const medicineWithTheCod = await axios.get(codeURL);
-    if (medicineWithTheCod.data) {
-      setProducts([medicineWithTheCod.data]);
+    const productWithTheCod = await axios.get(codeURL);
+    if (productWithTheCod.data) {
+      setProducts([productWithTheCod.data]);
       setIsFinding(true);
       setIsLoading(true);
     } else {
@@ -39,9 +39,9 @@ const FindProduct = () => {
 
   const findProductByItsName = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}${searchName}`;
-    const medicineWithTheName = await axios.get(codeURL);
-    if (medicineWithTheName.data) {
-      setProducts([medicineWithTheName.data]);
+    const productWithTheName = await axios.get(codeURL);
+    if (productWithTheName.data) {
+      setProducts([productWithTheName.data]);
       setIsFinding(true);
       setIsLoading(true);
     } else {
@@ -52,9 +52,9 @@ const FindProduct = () => {
   const findProductByItsDescription = useCallback(async () => {
     const searchDescriptionWithPlus = searchDescription.replace(/ /g, '+');
     const codeURL = `${process.env.REACT_APP_API_URL}search?q=${searchDescriptionWithPlus}`;
-    const medicinesWithTheDescription = await axios.get(codeURL);
-    if (medicinesWithTheDescription.data) {
-      setProducts(medicinesWithTheDescription.data);
+    const productWithDescription = await axios.get(codeURL);
+    if (productWithDescription.data) {
+      setProducts(productWithDescription.data);
       setIsFinding(true);
       setIsLoading(true);
     } else {
