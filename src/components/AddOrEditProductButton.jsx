@@ -19,11 +19,13 @@ const AddOrEditProductButton = () => {
     if (!cod || !name || !description || price <= 0 || stock < 0) {
       return alert('Você precisa preencher todos os campos, preço não pode ser zero e estoque não pode ser negativo');
     }
+    
     const doubled = products.find((medicine) =>  medicine.cod === Number(cod));
     
     if (doubled) {
       return alert('Código EAN já cadastrado');
     }
+
     setIsLoading(true);
 
     const formatedPrice = formatPrice(price);
@@ -58,7 +60,7 @@ const AddOrEditProductButton = () => {
     })
     setIsEditing(false);
     setIsLoading(true);
-  },[cod, description, name, price, setIsEditing, setIsLoading, stock]);
+  }, [cod, description, name, price, setIsEditing, setIsLoading, stock]);
   
   return (
     <div className="addButton"> 

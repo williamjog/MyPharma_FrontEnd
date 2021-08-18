@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import '../style/App.css';
 
 const ProductForm = () => {
-
   const { cod, setCod, setName, setDescription, 
     setPrice, setStock, isEditing } = useContext(ProductContext);
 

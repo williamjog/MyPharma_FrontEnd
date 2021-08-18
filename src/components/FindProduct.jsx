@@ -35,7 +35,7 @@ const FindProduct = () => {
     } else {
       return alert('Produto não encontrado!');
     }
-  },[searchCod, setIsFinding, setIsLoading, setProducts]);
+  }, [searchCod, setIsFinding, setIsLoading, setProducts]);
 
   const findProductByItsName = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}${searchName}`;
@@ -47,7 +47,7 @@ const FindProduct = () => {
     } else {
       return alert('Produto não encontrado!');
     }
-  },[searchName, setIsFinding, setIsLoading, setProducts]);
+  }, [searchName, setIsFinding, setIsLoading, setProducts]);
 
   const findProductByItsDescription = useCallback(async () => {
     const searchDescriptionWithPlus = searchDescription.replace(/ /g, '+');
@@ -60,7 +60,7 @@ const FindProduct = () => {
     } else {
       return alert('Produto não encontrado!');
     }
-  },[searchDescription, setIsFinding, setIsLoading, setProducts]);
+  }, [searchDescription, setIsFinding, setIsLoading, setProducts]);
 
   const classesName = `group1Wraper ${classes.root}`;
   
