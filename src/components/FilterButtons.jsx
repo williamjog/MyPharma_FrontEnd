@@ -20,14 +20,16 @@ const FilterButtons = () => {
         return alert('O valor mínimo precisa ser menor que o máximo');
       }
       const filteredProducts = products.filter((product) => {
-        return product.estoque >= minimumValue && product.estoque <= maximumValue
+        return minimumValue ? product.estoque >= minimumValue && product.estoque <= maximumValue 
+        : product.estoque <= maximumValue;
+
       });
       setProducts(filteredProducts);
     } else {
-      const filteredMedicines = products.filter((product) => {
+      const filteredProducts = products.filter((product) => {
         return product.estoque >= minimumValue;
       });
-      setProducts(filteredMedicines);
+      setProducts(filteredProducts);
     }
   }
 
