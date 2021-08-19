@@ -35,9 +35,7 @@ const ProductForm = () => {
               variant="outlined"
               onChange={(event) => setCod(event.target.value)}
               disabled={isEditing}
-              InputProps={{
-                readOnly: (isEditing ? true : false)
-              }}
+              InputProps={{ readOnly: (isEditing ? true : false) }}
             />
           </div>
           <div className="individual">

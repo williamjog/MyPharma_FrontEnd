@@ -22,7 +22,6 @@ const FilterButtons = () => {
       const filteredProducts = products.filter((product) => {
         return minimumValue ? product.estoque >= minimumValue && product.estoque <= maximumValue 
         : product.estoque <= maximumValue;
-
       });
       setProducts(filteredProducts);
     } else {
