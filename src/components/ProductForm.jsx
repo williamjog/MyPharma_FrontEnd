@@ -1,25 +1,14 @@
 import React, { useContext } from 'react';
 import ProductContext from '../context/ProductContext';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import ProductFormStyles from '../style/ProductFormStyles';
 import '../style/App.css';
 
 const ProductForm = () => {
   const { cod, setCod, setName, setDescription, 
     setPrice, setStock, isEditing } = useContext(ProductContext);
 
-  const styles = makeStyles({
-    root: { minWidth: 275 },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: { fontSize: 14 },
-    pos: { marginBottom: 12 },
-  });
-
-  const classes = styles();
+  const classes = ProductFormStyles();
 
   return (
       <div>

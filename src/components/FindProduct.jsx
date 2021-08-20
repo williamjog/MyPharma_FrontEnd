@@ -3,8 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import ProductContext from '../context/ProductContext';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
 import '../style/App.css';
+import FindProductStyles from '../style/FindProductStyles';
 import axios from 'axios';
 
 const FindProduct = () => {
@@ -12,18 +12,7 @@ const FindProduct = () => {
     setSearchCod, setIsFinding, searchName, 
     setSearchName, searchDescription, setSearchDescription } = useContext(ProductContext);
 
-  const styles = makeStyles({
-    root: { minWidth: 275 },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: { fontSize: 14 },
-    pos: { marginBottom: 12 },
-  });
-
-  const classes = styles();
+  const classes = FindProductStyles();
 
   const findProductByItsCode = useCallback(async () => {
     const codeURL = `${process.env.REACT_APP_API_URL}product/${searchCod}`;
