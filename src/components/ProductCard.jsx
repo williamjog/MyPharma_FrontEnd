@@ -5,24 +5,17 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import axios from 'axios';
+import ProductCardStyles from '../style/ProductCardStyles';
 import '../style/App.css';
 
 const ProductCard = ({ product }) => {
   const { setIsLoading, setIsEditing, setCod,
     setName, setDescription, setPrice, setStock } = useContext(ProductContext);
  
-  const useStyles = makeStyles({
-    root: { minWidth: 275 },
-    bullet: { display: 'inline-block', margin: '0 2px', transform: 'scale(0.8)' },
-    title: { fontSize: 14 },
-    pos: { marginBottom: 12 },
-  });
-
-  const classes = useStyles();
+  const classes = ProductCardStyles();
 
   const capitalizeFirstLetter = (string) => {
     if (string) return string.charAt(0).toUpperCase() + string.slice(1);
